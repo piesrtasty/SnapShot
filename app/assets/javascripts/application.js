@@ -10,7 +10,7 @@
 //= require jquery-ui-editors.js
 //= require uploader.js
 //
-//= require photo_album
+//= require example_app
 //
 //= require_tree ./models
 //= require_tree ./collections

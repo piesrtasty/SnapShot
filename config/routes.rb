@@ -1,13 +1,11 @@
-PhotoAlbum::Application.routes.draw do
-  # resources :tasks do
-  #      resources :attachments, :only => [:create, :show]
-  #    end
-  
-   resources :albums
-  
-   root :to => 'albums#index'
+ExampleApp::Application.routes.draw do
+  resources :albums do
+    resources :attachments, :only => [:create, :show]
+  end
 
-   if ["development", "test"].include? Rails.env
-     mount Jasminerice::Engine => "/jasmine"
-   end
+  root :to => 'albums#index'
+
+  if ["development", "test"].include? Rails.env
+    mount Jasminerice::Engine => "/jasmine"
+  end
 end

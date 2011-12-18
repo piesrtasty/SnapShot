@@ -5,6 +5,5 @@
  *= require_self
  *= require_tree . 
  *= require _flutie
- *= require screen.css
+ *= require backbone-forms.css
 */
-

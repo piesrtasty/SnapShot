@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-PhotoAlbum::Application.load_tasks
+ExampleApp::Application.load_tasks

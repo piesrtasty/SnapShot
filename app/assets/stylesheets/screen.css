@@ -1,5 +1,5 @@
 body	{
-	color: #363636;
+	background-color: #333; 
 	font-family: Helvetica,Arial,"MS Trebuchet",sans-serif;
 	font-size: 16px;
 	 line-height: 1.2em;
@@ -10,4 +10,9 @@ ul.menu-category > li	{
 	font-family: Helvetica,Arial,"MS Trebuchet",sans-serif;
 	font-size: 16px;
 	 line-height: 1.2em;
+}
+
+div.createChannel	{
+	display: block;
+	padding: 0 15px;
 }

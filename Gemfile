@@ -1,27 +1,21 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.1.1'
+gem 'rails', '3.1.0'
 gem 'sqlite3'
+
 gem 'rails-backbone'
 gem 'jquery-rails'
 gem 'ejs'
-gem 'pg'
 gem "flutie", "~> 1.3.2"
 gem "clearance", "~> 0.13.0"
 gem 'paperclip'
 gem 'rabl'
 gem 'backbone-support'
-gem 'less-rails'
-
-
-
-
 
 group :assets do
   gem 'sass-rails', "  ~> 3.1.0"
   gem 'coffee-rails', "~> 3.1.0"
   gem 'uglifier'
-  gem 'less'
 end
 
 group :development, :test do
@@ -29,7 +23,6 @@ group :development, :test do
   gem "ruby-debug19"
   gem 'jasmine', "= 1.1.0.rc4"
   gem 'jasminerice'
-	gem 'mongrel', "~>1.2.0.pre2"
 end
 
 group :test do

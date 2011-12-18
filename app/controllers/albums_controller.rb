@@ -3,8 +3,7 @@ class AlbumsController < ApplicationController
   respond_to :html, :json
 
   def index
-    # respond_with(@albums = current_user.albums.to_json)
-    respond_with Album.all.to_json
+    respond_with(@albums = current_user.albums)
   end
 
   def show
