@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Photo Album</title>
+  <%= stylesheet_link_tag    "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+	<header id="title">
+		<h1>Snapshot</h1>
+		<span id="status">
+			
+		</span>
+	</header>
+	
+	<div id="wrapper">
+		<div id="sidebar">
+			<h3>Albums</h3>
+			<!-- <a class="create" href="#new">New</a> -->
+			<ul id="albums-list" class="menu-category">
+				<li>Grand Canyon</li>
+				<li>Family Reunion</li>
+				<li>Las Vegas Trip</li>
+			</ul>
+			
+			<h3>Options</h3>
+			<ul id="options" class="menu-category">
+				<!-- <span class="ui-icon ui-icon-plusthick"></span> -->
+				<li id="settings-option" class="current" data-name="settings">Settings</li>
+			</ul>
+			
+			<h3>Search</h3>
+				<input type="search" placeholder="Search Disabled">
+			 <%= yield %>
+			
+		</div>
+		<div class="vdivide"></div>
+		<!-- <div id="album-holder" class="content"> -->
+			<div id="content">
+	      <!-- <div id="messages">
+	      	        <ul class="items">
+	      	        </ul>
+
+	      	        <div class="new">
+	      	          <textarea></textarea>
+	      	          <button>Send</button>
+	      	        </div>
+	      	      </div> -->
+
+	      <!-- <div id="searches">
+	        <h2>Search results: <span class="query"></span></h2>
+	        <ul class="items"></ul>
+	      </div> -->
+
+	      <div id="settings">
+	        <h2>Albums</h2>
+	        <ul class="channels">    
+	        </ul>
+
+	        <h2>Create Album</h2>
+	        <div class="createChannel">
+	          <form>
+	            <input type="text" placeholder="Album name">
+	            <button class="pill">New Album</button>
+	          </form>
+	        </div>
+
+	        <h2>Profile</h2>
+						<div id="header">
+						  <% flash.each do |key, value| -%>
+						    <div class="flash <%= key %>"><%= value %></div>
+						  <% end -%>
+							<% if signed_in? %>
+						  	<%= current_user.email %>
+						  	<%= link_to "Sign out", sign_out_path, :method => :delete %>
+
+						  <% else %>
+						    <%= link_to "Sign in", sign_in_path %>
+						  <% end %>
+						</div>
+	       
+	      </div>
+	    </div>
+	</div>
+	
+	<%= content_for :javascript do -%>
+	  <%= javascript_tag do %>
+	    $(function() {
+	      PhotoAlbum.init(<%= @albums.to_json %>);
+				PhotoAlbum.init();
+	    });
+	  <% end %>
+	<% end -%>
+
+  <%= javascript_include_tag "application" %>
+  <%= yield :javascript %>
+</body>
+</html>
