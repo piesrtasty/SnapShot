@@ -73,8 +73,14 @@ SnapShot.Views.AlbumsIndex = Backbone.View.extend({
 		$("li.menu-category").each(function()	{
 			$(this).removeClass("current");
 		})
-		$("#content").hide();
+		$("#settings").removeClass("active");
 		$(ev.target).addClass("current");
+		$("#photo-album-holder").addClass("active");
+		
+		
+		// $("#photo-album-holder h2:eq(2)").remove();
+		
+		
 	}
 })
 
