@@ -4,22 +4,25 @@
   <title>ExampleApp</title>
   <%= stylesheet_link_tag    "application" %>
   <%= csrf_meta_tags %>
+
+	<script type="text/template" id="album-template">
+		<li
+	</script>
+
 </head>
 <body>
 	<header id="title">
 	    <h1>SnapShot</h1>
-			<% flash.each do |key, value| -%>
-	      <div class="flash <%= key %>"><%= value %></div>
-	    <% end -%>
+			 <% flash.each do |key, value| -%>
+	        <div class="flash <%= key %>"><%= value %></div>
+	      <% end -%>
 	  </header>
 
 	  <div id="wrapper">
 	    <div id="sidebar">
-				<h3 class="styled_h3">Profile</h3>
-
-				
+							
 	      <h3>Photo Albums</h3>
-	      <ul id="channels">
+	      <ul id="albums">
 	      </ul>
 
 	      <h3>Options</h3>
@@ -51,34 +54,21 @@
 	      </div>
 
 	      <div id="settings" class="active">
-	        <h2>Channels</h2>
+	        <h2>Photo Albums</h2>
 	        <ul class="channels">
 	        </ul>
 
-	        <h2>Create Channel</h2>
+	        <h2>Create New Album</h2>
 	        <div class="createChannel">
 	          <form>
-	            <input type="text" placeholder="Channel name">
-	            <button class="pill">New Channel</button>
+	            <input type="text" placeholder="Album Name">
+	            <button class="pill">New Album</button>
 	          </form>
 	        </div>
 
 	        <h2 class="styled_h2">Profile</h2>
-					<div id="contents">
-				    <div id="header">
-				      <% flash.each do |key, value| -%>
-				        <div class="flash <%= key %>"><%= value %></div>
-				      <% end -%>
-
-				      <% if signed_in? %>
-				        <%= current_user.email %>
-				        <%= link_to "Sign out", sign_out_path, :method => :delete %>
-				      <% else %>
-				        <%= link_to "Sign in", sign_in_path %>
-				      <% end %>
-				    </div>
-
-				    <%= yield %>
+					<div>
+				    
 				  </div>
 	      
 				</div>
