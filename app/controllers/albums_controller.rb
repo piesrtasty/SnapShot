@@ -13,7 +13,7 @@ class AlbumsController < ApplicationController
 
   def create
     respond_with(current_user.albums.create(params[:album]))
-    # respond_with(Album.create(params[:album]))
+    # respond_with(Albums.create(params[:album]))
   end
 
   def update

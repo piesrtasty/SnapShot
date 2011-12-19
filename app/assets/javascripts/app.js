@@ -23,7 +23,7 @@ SnapShot.Models.Album = Backbone.Model.extend({
   urlRoot: '/albums',
 });
 
-window.Albums = new SnapShot.Collections.Albums;
+// window.Albums = new SnapShot.Collections.Albums;
 
 SnapShot.Views.AlbumsIndex = Backbone.View.extend({
 	initialize: function()	{
