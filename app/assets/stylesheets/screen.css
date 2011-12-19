@@ -1,3 +1,45 @@
 #content	{
 	display: none;
 }
+
+#session_email	{
+	border: 1px solid #9E9FA2;
+	  color: #363636;
+	  text-shadow: 0 1px 1px #FFF;
+	  font-size: 17px;
+	  outline: none;
+	  padding: 10px;
+	  -moz-border-radius: 20px;
+	  -webkit-border-radius: 20px;
+	  border-radius: 20px;
+	  -moz-border-radius: 20px;
+	  -webkit-border-radius: 20px;
+	  border-radius: 20px;
+	  -moz-border-radius: 20px;
+	  -webkit-border-radius: 20px;
+	  border-radius: 20px;
+	  -moz-border-radius: 20px;
+	  -webkit-border-radius: 20px;
+	  border-radius: 20px;
+	  background: #e6e6e7;
+	  background: -webkit-gradient(linear, left top, left bottom, from(#e6e6e7), to(#fafafa));
+	  background: -moz-linear-gradient(top, #e6e6e7, #fafafa);
+	  background: linear-gradient(top, #e6e6e7, #fafafa);
+	  background: #e6e6e7;
+	  background: -webkit-gradient(linear, left top, left bottom, from(#e6e6e7), to(#fafafa));
+	  background: -moz-linear-gradient(top, #e6e6e7, #fafafa);
+	  background: linear-gradient(top, #e6e6e7, #fafafa);
+	  background: #e6e6e7;
+	  background: -webkit-gradient(linear, left top, left bottom, from(#e6e6e7), to(#fafafa));
+	  background: -moz-linear-gradient(top, #e6e6e7, #fafafa);
+	  background: linear-gradient(top, #e6e6e7, #fafafa);
+	  background: #e6e6e7;
+	  background: -webkit-gradient(linear, left top, left bottom, from(#e6e6e7), to(#fafafa));
+	  background: -moz-linear-gradient(top, #e6e6e7, #fafafa);
+	  background: linear-gradient(top, #e6e6e7, #fafafa);
+	  background: -webkit-gradient(linear, left top, left bottom, from(#e6e6e7), color-stop(0.3, #fafafa), to(#fafafa));
+}
+
+#session_password	{
+	
+}

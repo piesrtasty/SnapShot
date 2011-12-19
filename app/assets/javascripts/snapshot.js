@@ -68,6 +68,32 @@ SnapShot.Views.AlbumItem = Backbone.View.extend({
 	
 })
 
+// SnapShot.Views.AlbumsIndex = Backbone.View.extend({
+// 	initialize: function()	{
+// 		_.bindAll(this, "render");
+// 		this.collection.bind("all", this.render);
+// 		this.render();
+// 	},
+// 	
+// 	render: function()	{
+// 		this.renderAlbums();
+// 		return this;
+// 		
+// 	},
+// 	
+// 	renderAlbums: function()	{
+// 		var self = this;
+// 		$("#albums").html("");
+// 		this.collection.each(function(album)	{
+// 			$("#albums").append("<li>" + album.escape('title') + "</li>");
+// 		})	
+// 	}
+// })
+// 
+// SnapShot.Views.AlbumItem = Backbone.View.extend({
+// 	
+// })
+
 SnapShot.Views.AlbumsNew = Backbone.View.extend({
 	el: '#createAlbum',
 	

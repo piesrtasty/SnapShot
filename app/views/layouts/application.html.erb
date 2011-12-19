@@ -79,6 +79,19 @@
 					        <%= link_to "Sign in", sign_in_path %>
 					      <% end %>
 					    </div>
+							<form accept-charset="UTF-8" action="/session" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="8ioRcATDtjXHQv3xEZETChVJoqdPfMLymCqChtcICWQ=" /></div>
+							  <div class="text_field">
+							    <label for="session_email">Email</label>
+							    <input id="session_email" name="session[email]" size="30" type="email" />
+							  </div>
+							  <div class="text_field">
+							    <label for="session_password">Password</label>
+							    <input id="session_password" name="session[password]" size="30" type="password" />
+							  </div>
+							  <div class="submit_field">
+							    <button class="pill" name="commit" type="submit" value="Sign in">Sign in</button>
+							  </div>
+							</form>
 				  </div>
 	      
 				</div>
