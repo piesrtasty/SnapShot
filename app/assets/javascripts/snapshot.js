@@ -25,6 +25,8 @@ SnapShot.Models.Album = Backbone.Model.extend({
   urlRoot: '/albums',
 });
 
+SnapShot.Models.Photo = Backbone.Model.extend({});
+
 SnapShot.Routers.Albums = Backbone.Router.extend({
 	
 	initialize: function()	{
