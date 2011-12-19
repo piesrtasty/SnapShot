@@ -27,7 +27,7 @@
 
 	      <h3>Options</h3>
 	      <ul id="options">
-	        <li data-name="settings" class="current">Settings</li>
+	        <li id="settings-option" data-name="settings">Settings</li>
 	      </ul>
 
 	      <h3>Search</h3>
@@ -59,14 +59,26 @@
 	        </ul>
 
 	        <h2>Create New Album</h2>
-	        <div class="createAlbum">
+	        <div id="createAlbum">
 	            <input id="newAlbum" type="text" placeholder="Album Name">
-	            <button class="pill">New Album</button>
+	            <button id="newAlbumBtn" class="pill">New Album</button>
 	        </div>
 
-	        <h2 class="styled_h2">Profile</h2>
+	        <h2 class="">Profile</h2>
 					<div>
-				    
+				    <div id="contents">
+					    <div id="header">
+					      <% flash.each do |key, value| -%>
+					        <div class="flash <%= key %>"><%= value %></div>
+					      <% end -%>
+
+					      <% if signed_in? %>
+					        <%= current_user.email %>
+					        <%= link_to "Sign out", sign_out_path, :method => :delete %>
+					      <% else %>
+					        <%= link_to "Sign in", sign_in_path %>
+					      <% end %>
+					    </div>
 				  </div>
 	      
 				</div>

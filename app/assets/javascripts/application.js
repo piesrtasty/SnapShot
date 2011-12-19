@@ -11,4 +11,5 @@
 //= require uploader.js
 //
 //= require app
+//= require snapshot
 
