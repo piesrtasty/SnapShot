@@ -7,26 +7,83 @@
 </head>
 <body>
 	<header id="title">
-		<h1>Snapshot</h1>
+	    <h1>SnapShot</h1>
+			<% flash.each do |key, value| -%>
+	      <div class="flash <%= key %>"><%= value %></div>
+	    <% end -%>
+	  </header>
 
-	</header>
-  <div id="contents">
-    <div id="header">
-      <% flash.each do |key, value| -%>
-        <div class="flash <%= key %>"><%= value %></div>
-      <% end -%>
+	  <div id="wrapper">
+	    <div id="sidebar">
+				<h3 class="styled_h3">Profile</h3>
 
-      <% if signed_in? %>
-        <%= current_user.email %>
-        <%= link_to "Sign out", sign_out_path, :method => :delete %>
-      <% else %>
-        <%= link_to "Sign in", sign_in_path %>
-      <% end %>
-    </div>
+				
+	      <h3>Photo Albums</h3>
+	      <ul id="channels">
+	      </ul>
 
-    <%= yield %>
-  </div>
+	      <h3>Options</h3>
+	      <ul id="options">
+	        <li data-name="settings" class="current">Settings</li>
+	      </ul>
 
+	      <h3>Search</h3>
+	      <input type="search" results="0" incremental="true" placeholder="Search">
+	
+	    </div>
+
+	    <div class="vdivide"></div>
+
+	    <div id="content">
+	      <div id="messages">
+	        <ul class="items">
+	        </ul>
+
+	        <div class="new">
+	          <textarea></textarea>
+	          <button>Send</button>
+	        </div>
+	      </div>
+
+	      <div id="searches">
+	        <h2>Search results: <span class="query"></span></h2>
+	        <ul class="items"></ul>
+	      </div>
+
+	      <div id="settings" class="active">
+	        <h2>Channels</h2>
+	        <ul class="channels">
+	        </ul>
+
+	        <h2>Create Channel</h2>
+	        <div class="createChannel">
+	          <form>
+	            <input type="text" placeholder="Channel name">
+	            <button class="pill">New Channel</button>
+	          </form>
+	        </div>
+
+	        <h2 class="styled_h2">Profile</h2>
+					<div id="contents">
+				    <div id="header">
+				      <% flash.each do |key, value| -%>
+				        <div class="flash <%= key %>"><%= value %></div>
+				      <% end -%>
+
+				      <% if signed_in? %>
+				        <%= current_user.email %>
+				        <%= link_to "Sign out", sign_out_path, :method => :delete %>
+				      <% else %>
+				        <%= link_to "Sign in", sign_in_path %>
+				      <% end %>
+				    </div>
+
+				    <%= yield %>
+				  </div>
+	      
+				</div>
+	    </div>
+	  </div>
   <%= javascript_include_tag "application" %>
   <%= yield :javascript %>
 </body>

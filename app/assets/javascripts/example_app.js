@@ -13,3 +13,6 @@ var ExampleApp = {
     }
   }
 };
+
+$("#session_email").attr("placeholder", "Username");
+$("#session_password").attr("placeholder", "Password");
