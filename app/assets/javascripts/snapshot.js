@@ -43,6 +43,12 @@ SnapShot.Routers.Albums = Backbone.Router.extend({
 });
 
 SnapShot.Views.AlbumsIndex = Backbone.View.extend({
+	el: "#albums",
+	
+	events: {
+		"click li.album-item": "selectAlbum"
+	},
+	
 	initialize: function()	{
 		_.bindAll(this, "render");
 		this.collection.bind("all", this.render);
@@ -59,12 +65,29 @@ SnapShot.Views.AlbumsIndex = Backbone.View.extend({
 		var self = this;
 		$("#albums").html("");
 		this.collection.each(function(album)	{
-			$("#albums").append("<li>" + album.escape('title') + "</li>");
+			new SnapShot.Views.AlbumItem({ model: album});
 		})	
+	},
+	
+	selectAlbum: function(ev)	{
+		$("li.menu-category").each(function()	{
+			$(this).removeClass("current");
+		})
+		$("#content").hide();
+		$(ev.target).addClass("current");
 	}
 })
 
 SnapShot.Views.AlbumItem = Backbone.View.extend({
+	initialize: function()	{
+		_.bindAll(this, "render");
+		this.render();
+	},
+	
+	render: function()	{
+		// $("#albums").append("<li>" + album.escape('title') + "</li>");
+		$("#albums").append("<li class='album-item menu-category'>" + this.model.escape('title') + "</li>");
+	}
 	
 })
 
