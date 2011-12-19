@@ -4,6 +4,7 @@ class AlbumsController < ApplicationController
 
   def index
     respond_with(@albums = current_user.albums)
+    # respond_with(@albums = Album.all)
   end
 
   def show
@@ -12,6 +13,7 @@ class AlbumsController < ApplicationController
 
   def create
     respond_with(current_user.albums.create(params[:album]))
+    # respond_with(Album.create(params[:album]))
   end
 
   def update
