@@ -155,13 +155,17 @@ SnapShot.Views.AlbumShow = Backbone.View.extend({
 	},
 	
 	initialize: function()	{
-		_.bindAll(this, "render");
+		// _.bindAll(this, "render");
+		// 		this.render();
+		_.bindAll(this, "render", "uploadSuccess");
+    this.model.bind("change", this.render);
 		this.render();
 	},
 	
 	render: function()	{
 		this.renderPhotos()
 		this.attachUploader()
+		return this;
 	},
 	
 	renderPhotos: function()	{
@@ -169,10 +173,23 @@ SnapShot.Views.AlbumShow = Backbone.View.extend({
 		var $photos = this.$('ul.photos');
 		$photos.html('');
 		
-
-		// 
-		// // $(SnapShot.albums.models[this.options.modelId].collection.models).each(function(photo)	{
-		// this.options.album.photos.each(function(photo)	{
+		// alert(this.model.attributes.photos)
+		var numPhotos = this.model.attributes.photos.length
+		
+		$(this.model.attributes.photos).each(function(index, value)	{
+			var photoView = "<li><img src=" + value.upload_url + "/></li>";
+			$photos.append(photoView);
+		});
+		
+		// for(var i = 0; i < numPhotos; i++)	{
+		// 			var photoView = "<li><img src=" + this.model.attributes.photos[i].upload_url + "/></li>";
+		// 			
+		// 		}
+		
+		
+	  // $(this.model.attributes.photos).each(function(photo)	{
+	  // 	  	  			alert(photo.uload_url);
+	  // 		});
 		// 	
 		// 	// var photoView = $('<li><p></p><img></li>');
 		// 	// $('p', photoView).text("Attached: " + photo.escape('upload_file_name'));
@@ -184,7 +201,7 @@ SnapShot.Views.AlbumShow = Backbone.View.extend({
 	},
 	
 	attachUploader: function()	{
-		var uploadurl = "/albums/" + this.options.modelId + '/photos.json';
+		var uploadurl = "/albums/" + this.model.get('id') + '/photos.json';
 
 		this.uploader = new uploader(this.uploadInput(), {
 			url: uploadurl,
