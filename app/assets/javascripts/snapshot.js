@@ -27,6 +27,11 @@ SnapShot.Models.Album = Backbone.Model.extend({
 
 SnapShot.Models.Photo = Backbone.Model.extend({});
 
+SnapShot.Models.Photos = Backbone.Collection.extend({
+	model: SnapShot.Models.Photo,
+	url: '/photos'
+})
+
 SnapShot.Routers.Albums = Backbone.Router.extend({
 	
 	initialize: function()	{
@@ -93,37 +98,11 @@ SnapShot.Views.AlbumItem = Backbone.View.extend({
 	},
 	
 	render: function()	{
-		// $("#albums").append("<li>" + album.escape('title') + "</li>");
+
 		$("#albums").append("<li class='album-item menu-category'>" + this.model.escape('title') + "</li>");
 	}
 	
 })
-
-// SnapShot.Views.AlbumsIndex = Backbone.View.extend({
-// 	initialize: function()	{
-// 		_.bindAll(this, "render");
-// 		this.collection.bind("all", this.render);
-// 		this.render();
-// 	},
-// 	
-// 	render: function()	{
-// 		this.renderAlbums();
-// 		return this;
-// 		
-// 	},
-// 	
-// 	renderAlbums: function()	{
-// 		var self = this;
-// 		$("#albums").html("");
-// 		this.collection.each(function(album)	{
-// 			$("#albums").append("<li>" + album.escape('title') + "</li>");
-// 		})	
-// 	}
-// })
-// 
-// SnapShot.Views.AlbumItem = Backbone.View.extend({
-// 	
-// })
 
 SnapShot.Views.AlbumsNew = Backbone.View.extend({
 	el: '#createAlbum',
@@ -138,10 +117,6 @@ SnapShot.Views.AlbumsNew = Backbone.View.extend({
 	},
 	
 	handleEnter: function(e)	{
-		var text = $(this.el).find("#newAlbum").val();
-		if (!text || e.keyCode != 13)	{
-			return;
-		}
 		var text = $("#newAlbum").val();
 		if (!text || e.keyCode != 13)	{
 			return;

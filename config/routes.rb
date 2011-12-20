@@ -1,6 +1,6 @@
 ExampleApp::Application.routes.draw do
   resources :albums do
-    resources :attachments, :only => [:create, :show]
+    resources :photos, :only => [:create, :show]
   end
 
   root :to => 'albums#index'
