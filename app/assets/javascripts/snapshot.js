@@ -59,6 +59,7 @@ SnapShot.Routers.Albums = Backbone.Router.extend({
 	},
 	
 	show: function(albumId)	{
+		new SnapShot.Views.AlbumsIndex({ collection: this.collection });
 		var album = this.collection.get(albumId);
 		var albumRouter = this;
 		album.fetch({
