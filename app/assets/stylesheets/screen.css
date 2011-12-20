@@ -3,6 +3,19 @@
 	display: none;
 }
 
+li.photo-album-image	{
+	margin: 10px;
+}
+
+ul.photos	{
+	overflow: hidden;
+}
+
+#photos li	{
+	display: inline;
+	list-style-type: none;
+}
+
 #session_email	{
 	border: 1px solid #9E9FA2;
 	  color: #363636;

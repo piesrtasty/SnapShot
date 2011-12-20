@@ -101,26 +101,11 @@ SnapShot.Views.AlbumsIndex = Backbone.View.extend({
 		$("#albums").html("");
 		this.collection.each(function(album)	{
 			new SnapShot.Views.AlbumItem({ model: album});
-			// new SnapShot.Views.AlbumShow({model: album});
 		})	
 	},
 	
 	selectAlbum: function(ev)	{
-
-			// $("li.menu-category").each(function()	{
-			// 				$(this).removeClass("current");
-			// 			})
-			// 			$("#settings").removeClass("active");
-			// 			$(ev.target).addClass("current");
-			// 			$("#photo-album-holder").addClass("active");
-			// 			var modelId = $(ev.target).attr("model-id");
-			// alert(modelId);
-			// new SnapShot.Views.AlbumShow({modelId: modelId});
-			
-			// $("#photo-album-holder h2:eq(2)").remove();
-			
-			
-		}
+	}
 })
 
 SnapShot.Views.AlbumItem = Backbone.View.extend({
@@ -172,32 +157,10 @@ SnapShot.Views.AlbumShow = Backbone.View.extend({
 		var self = this;
 		var $photos = this.$('ul.photos');
 		$photos.html('');
-		
-		// alert(this.model.attributes.photos)
-		var numPhotos = this.model.attributes.photos.length
-		
 		$(this.model.attributes.photos).each(function(index, value)	{
-			var photoView = "<li><img src=" + value.upload_url + "/></li>";
+			var photoView = "<li class='photo-album-image'><img height='75' width='75' src=" + value.upload_url + "/><li>";
 			$photos.append(photoView);
 		});
-		
-		// for(var i = 0; i < numPhotos; i++)	{
-		// 			var photoView = "<li><img src=" + this.model.attributes.photos[i].upload_url + "/></li>";
-		// 			
-		// 		}
-		
-		
-	  // $(this.model.attributes.photos).each(function(photo)	{
-	  // 	  	  			alert(photo.uload_url);
-	  // 		});
-		// 	
-		// 	// var photoView = $('<li><p></p><img></li>');
-		// 	// $('p', photoView).text("Attached: " + photo.escape('upload_file_name'));
-		//       // $('img', photoView).attr("src", photo.get('upload_url'));
-		// 	// $('img', photoView).attr("src", photo.upload_url);
-		// 	var photoView = "<li><img src=" + photo.get('upload_url') + "/></li>";
-		//       $photos.append(photoView);
-		// })
 	},
 	
 	attachUploader: function()	{
@@ -224,7 +187,7 @@ SnapShot.Views.AlbumShow = Backbone.View.extend({
 	},
 	
 	uploadSuccess: function(data)	{
-		alert("win!");
+		this.model.fetch();
 	}
 	
 	
