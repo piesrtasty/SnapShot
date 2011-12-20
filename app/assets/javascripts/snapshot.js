@@ -77,32 +77,64 @@ SnapShot.Views.AlbumsIndex = Backbone.View.extend({
 	},
 	
 	selectAlbum: function(ev)	{
-		$("li.menu-category").each(function()	{
-			$(this).removeClass("current");
-		})
-		$("#settings").removeClass("active");
-		$(ev.target).addClass("current");
-		$("#photo-album-holder").addClass("active");
-		
-		
-		// $("#photo-album-holder h2:eq(2)").remove();
-		
-		
-	}
+		alert("selecting");
+			$("li.menu-category").each(function()	{
+				$(this).removeClass("current");
+			})
+			$("#settings").removeClass("active");
+			$(ev.target).addClass("current");
+			$("#photo-album-holder").addClass("active");
+			var modelId = $(ev.target).attr("model-id");
+			// alert(modelId);
+			new SnapShot.Views.AlbumShow({modelId: modelId});
+			
+			// $("#photo-album-holder h2:eq(2)").remove();
+			
+			
+		}
 })
 
 SnapShot.Views.AlbumItem = Backbone.View.extend({
+	events: {
+	
+	},
+	
+	initialize: function()	{
+		_.bindAll(this, "render");
+		this.render();
+	},
+	
+	render: function()	{	
+		$("#albums").append("<li model-id='" + this.model.get('id') +  "' class='album-item menu-category'>" + this.model.escape('title') + "</li>");
+	},
+	
+	// albumUrl: function()	{
+	// 		return "/albums/" + this.model.get('id');
+	// 	}
+	// 	
+});
+
+SnapShot.Views.AlbumShow = Backbone.View.extend({
 	initialize: function()	{
 		_.bindAll(this, "render");
 		this.render();
 	},
 	
 	render: function()	{
-
-		$("#albums").append("<li class='album-item menu-category'>" + this.model.escape('title') + "</li>");
-	}
+		// this.renderPhotos()
+		this.attachUploader()
+	},
 	
+	renderPhotos: function()	{
+		// alert("rendering photos");
+	},
+	
+	attachUploader: function()	{
+		alert("attaching uploader");
+		alert(this.options.modelId);
+	}
 })
+
 
 SnapShot.Views.AlbumsNew = Backbone.View.extend({
 	el: '#createAlbum',
