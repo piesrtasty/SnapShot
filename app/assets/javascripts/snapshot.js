@@ -115,6 +115,12 @@ SnapShot.Views.AlbumItem = Backbone.View.extend({
 });
 
 SnapShot.Views.AlbumShow = Backbone.View.extend({
+	el: "#photo-album-holder",
+	
+	events: {
+		"click #uploadButton": "upload"
+	},
+	
 	initialize: function()	{
 		_.bindAll(this, "render");
 		this.render();
@@ -130,9 +136,33 @@ SnapShot.Views.AlbumShow = Backbone.View.extend({
 	},
 	
 	attachUploader: function()	{
-		alert("attaching uploader");
-		alert(this.options.modelId);
+		var uploadurl = "/albums/" + this.options.modelId + '/photos.json';
+
+		this.uploader = new uploader(this.uploadInput(), {
+			url: uploadurl,
+			success: this.uploadSuccess,
+			prefix: 'upload'
+		});
+		
+		this.uploader.prefilter = function()	{
+			var token = $('meta[name="csrf-token"]').attr('content');
+			if (token) this.xhr.setRequestHeader('X-CSRF-Token', token);
+		}
+	},
+	
+	uploadInput: function()	{
+		return this.$('.upload input').get(0);
+	},
+	
+	upload: function()	{
+		this.uploader.send();
+	},
+	
+	uploadSuccess: function(data)	{
+		alert("win!");
 	}
+	
+	
 })
 
 
