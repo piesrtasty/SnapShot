@@ -50,33 +50,65 @@ SnapShot.Routers.Albums = Backbone.Router.extend({
 	
 	routes: {
 		"": "index",
-		"albums/:id": "show"
+		"albums/:id": "show",
+		"settings": "displaySettings"
 	},
 	
 	index: function()	{
 		new SnapShot.Views.AlbumsIndex({ collection: this.collection });
 		new SnapShot.Views.AlbumsNew()
+		new SnapShot.Views.SettingsListItem()
 	},
 	
 	show: function(albumId)	{
 		new SnapShot.Views.AlbumsIndex({ collection: this.collection });
 		var album = this.collection.get(albumId);
 		var albumRouter = this;
+		// $("#settings-option").removeClass("current");
+		// $("#settings-option").addClass("current");
+		
 		album.fetch({
 			success: function()	{
-				$("li.menu-category").each(function()	{
-					$(this).removeClass("current");
-				})
-				$("#settings").removeClass("active");
-				// $(ev.target).addClass("current");
-				$("#photo-album-holder").addClass("active");
-				// var modelId = $(ev.target).attr("model-id");
+				// $("li.menu-category").each(function()	{
+				// 	$(this).removeClass("current");
+				// })
+				// $("#settings").removeClass("active");
+				// // $(ev.target).addClass("current");
+				// $("#photo-album-holder").addClass("active");
+				// // var modelId = $(ev.target).attr("model-id");
 				new SnapShot.Views.AlbumShow({model: album});
 			}
 		})
+	},
+	
+	displaySettings: function()	{
+		$("#photo-album-holder").removeClass("active");
+			$("#photo-album-holder").hide();
+			$("#settings").addClass("active");
+			$("#settings").show();
+		// 	$("#settings-option").addClass("current");
+		
 	}
 	
 });
+
+SnapShot.Views.SettingsListItem = Backbone.View.extend({
+	el: "#options",
+	
+	initialize: function()	{
+		_.bindAll(this, "render")
+		this.render();
+	},
+
+	
+	render: function()	{
+			var $settingsListItem = $("<li class='menu-category' id='settings-option' data-name='settings'><a href='#settings'>Settings</a></li>");
+			$(this.el).append($settingsListItem);
+		}
+	
+})
+
+// <li class="menu-category" id="settings-option" data-name="settings">Settings</li>
 
 SnapShot.Views.AlbumsIndex = Backbone.View.extend({
 	el: "#albums",
@@ -120,7 +152,16 @@ SnapShot.Views.AlbumItem = Backbone.View.extend({
 	},
 	
 	render: function()	{	
-		$("#albums").append("<li model-id='" + this.model.get('id') +  "' class='album-item menu-category'>" + "<a href='" + this.albumUrl() + "'> " +  this.model.escape('title') + "</a></li>");
+		$albumItem = $("<li model-id='" + this.model.get('id') +  "' class='album-item menu-category'>" + "<a href='" + this.albumUrl() + "'> " +  this.model.escape('title') + "</a></li>")
+		$("#albums").append($albumItem);
+		$albumItem.click(function()	{
+			$("#photo-album-holder").addClass("active");
+			$("#photo-album-holder").show();
+			$("#settings").removeClass("active");
+			$("#settings").hide();
+			// $(this).addClass("current");
+			$(this).find("a").click();
+		})
 	},
 	
 	albumUrl: function()	{
