@@ -61,7 +61,7 @@ SnapShot.Routers.Albums = Backbone.Router.extend({
 	},
 	
 	show: function(albumId)	{
-		new SnapShot.Views.AlbumsIndex({ collection: this.collection });
+		// new SnapShot.Views.AlbumsIndex({ collection: this.collection });
 		var album = this.collection.get(albumId);
 		var albumRouter = this;
 		// $("#settings-option").removeClass("current");
@@ -69,6 +69,7 @@ SnapShot.Routers.Albums = Backbone.Router.extend({
 		
 		album.fetch({
 			success: function()	{
+				$("li[model-id='" + albumId + "']").addClass("current");
 				// $("li.menu-category").each(function()	{
 				// 	$(this).removeClass("current");
 				// })
@@ -83,9 +84,10 @@ SnapShot.Routers.Albums = Backbone.Router.extend({
 	
 	displaySettings: function()	{
 		$("#photo-album-holder").removeClass("active");
-			$("#photo-album-holder").hide();
-			$("#settings").addClass("active");
-			$("#settings").show();
+		$("#photo-album-holder").hide();
+		$("#settings").addClass("active");
+		$("#settings").show();
+			
 		// 	$("#settings-option").addClass("current");
 		
 	}
@@ -159,8 +161,8 @@ SnapShot.Views.AlbumItem = Backbone.View.extend({
 			$("#photo-album-holder").show();
 			$("#settings").removeClass("active");
 			$("#settings").hide();
-			// $(this).addClass("current");
-			$(this).find("a").click();
+			
+			// $(this).addClass("current")
 		})
 	},
 	

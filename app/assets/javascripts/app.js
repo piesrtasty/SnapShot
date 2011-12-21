@@ -14,7 +14,11 @@
 // 	$("#photo-album-holder").removeClass("active");
 // });
 
-
+$(document).ready(function()	{
+	$("a").click(function()	{
+		$(this).parent().addClass("current");
+	})
+});
 
 
 
