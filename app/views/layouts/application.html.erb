@@ -12,7 +12,7 @@
 </head>
 <body>
 	<header id="title">
-	    <h1>SnapShot</h1>
+	    <h1><a href="http://0.0.0.0:3000">SnapShot</a></h1>
 			 <% flash.each do |key, value| -%>
 	        <div class="flash <%= key %>"><%= value %></div>
 	      <% end -%>
@@ -109,8 +109,8 @@
 				<div>
 					<div id="uploadContainer" class="upload">
 					  <label for="input">Attach a file to upload</label>
-					  <input type="file" name="file" />
-					  <button id="uploadButton">Upload attachment</button>
+					  <input class="pill" type="file" name="file"/>
+					  <button class="pill" id="uploadButton">Upload attachment</button>
 					</div>
 				</div>
 			</div>
